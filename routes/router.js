@@ -10,8 +10,14 @@ router.get("/allGenres", controller.allGenresGet);
 router.get("/addAlbum", controller.addAlbumGet);
 router.get("/addGenre", controller.addGenreGet);
 
-router.get("/genre", controller.genreGet);
+router.get("/genre/:id", (req, res) => {
+	const id = parseInt(req.params.id, 10);
+	controller.findGenreById(id, res);
+});
 
-router.get("/album", controller.albumGet);
+router.get("/album/:id", (req, res) => {
+	const id = parseInt(req.params.id, 10);
+	controller.findAlbumById(id, res);
+});
 
 module.exports = router;

@@ -67,6 +67,11 @@ nav > ul > li > a{
     width: 40vw;
     justify-content: space-between;
 }
+
+.allAlbums_image{
+    width: 200px;
+    height: 200px;
+}
 /* all albums */
 
 /* album */

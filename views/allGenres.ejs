@@ -13,9 +13,12 @@
 
             <div class="genres-list">
                 <ul>
-                    <li> <a href="#!">Post-rock</a> <span>amount of albums: 2</span> </li>
-                    <li> <a href="#!">Post-rock</a> <span>amount of albums: 2</span> </li>
-                    <li> <a href="#!">Post-rock</a> <span>amount of albums: 2</span> </li>
+                    <% genres.forEach(function(genre) { %>
+                        <li>
+                            <a href="/genre/<%= genre.id_genre %>"><%= genre.name %></a> 
+                            <span>amount of albums: <%= genre.album_count %> </span>
+                        </li>
+                    <% }) %>
                 </ul>
             </div>
         </div>
@@ -23,3 +26,5 @@
 
 </body>
 </html>
+
+

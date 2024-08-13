@@ -1,0 +1,1 @@
+SELECT genre.name, genre.id_genre COUNT(album.id_album) AS album_count FROM genre LEFT JOIN album ON genre.id_genre = album.genre_id GROUP BY genre.name;

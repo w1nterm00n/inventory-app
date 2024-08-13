@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="/../style.css">
     </head>
 <body>
 
@@ -13,24 +13,29 @@
 
             <div class="album-info">
                 <div class="text-info">
-                    <h3 class="albumName">Album name</h3>
+                    <h3 class="albumName"> <%= album.name %> </h3>
                     <ul>
-                        <li>album: <span>blah blah</span></li>
-                        <li>artist: <span>blah blah</span></li>
+                        <li>album: <span> <%= album.name %> </span></li>
+                        <li>artist: <span> <%= album.artist %> </span></li>
                         <li>genre: <span>blah blah</span></li>
-                        <li style="margin-bottom: 60px;">price: <span>blah blah</span></li>
-
-                        <li>year: <span>blah blah</span></li>
-                        <li>description: <span>blah blah</span></li>
+                        <li style="margin-bottom: 60px;">price: <span> <%= album.price %> </span></li>
+            
+                        <li>year: <span> <%= album.year %> </span></li>
+                        <li>description: <span> <%= album.description %> </span></li>
                     </ul>
-
+            
                     <button class="btn change-btn" style="margin-right: 50px;"><a href="#!">Change</a></button>
                     <button class="btn change-btn"><a href="#!">Delete</a></button>
                 </div>
                 <div class="album-cover">
-                    <img src="https://picsum.photos/400/400" alt="Album Cover">
+                    <% if (album.img_url) { %>
+                        <img src="<%= album.img_url %>" alt="Album Cover">
+                    <% } else { %>
+                        <p>No Cover Available</p>
+                    <% } %>
                 </div>
             </div>
+
         </div>
     </div>
 
