@@ -4,6 +4,8 @@ const app = express();
 const router = require("./routes/router");
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(express.urlencoded({ extended: true }));
+
 //задаю шаблонизатор ejs
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");

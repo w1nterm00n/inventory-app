@@ -7,8 +7,18 @@ router.get("/", controller.homepageGet);
 router.get("/allAlbums", controller.allAlbumsGet);
 router.get("/allGenres", controller.allGenresGet);
 
-router.get("/addAlbum", controller.addAlbumGet);
+//router.get("/addAlbum", controller.addAlbumGet);
+
+router.get("/addAlbum", (req, res) => {
+	controller.addAlbumGet(req, res);
+});
+
 router.get("/addGenre", controller.addGenreGet);
+
+router.post("/addGenre", (req, res) => {
+	controller.addGenrePost(req, res);
+	res.redirect("/");
+});
 
 router.get("/genre/:id", (req, res) => {
 	const id = parseInt(req.params.id, 10);

@@ -34,9 +34,30 @@ async function getGenreById(id) {
 	return rows;
 }
 
+async function getGenreById(id) {
+	const { rows } = await pool.query(
+		"SELECT album.name, album.id_album, album.artist, album.year, album.price, album.img_url,\
+        genre.name AS genre_name FROM album\
+        INNER JOIN genre ON album.genre_id = genre.id_genre WHERE album.genre_id = $1;",
+		[id]
+	);
+	return rows;
+}
+
+async function addGenre(name) {
+	await pool.query("INSERT INTO genre (name) VALUES ($1)", [name]);
+}
+
+async function getGenresList() {
+	const { rows } = await pool.query("SELECT * FROM genre");
+	return rows; //id_genre, name
+}
+
 module.exports = {
 	getAllAlbums,
 	getAllGenres,
 	getAlbumById,
 	getGenreById,
+	addGenre,
+	getGenresList,
 };

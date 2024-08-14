@@ -25,10 +25,9 @@
                 <div class="input">
                     <label for="albumGenre">Genre:</label>
                     <select id="albumGenre" name="albumGenre" style=" width: 180px; margin-bottom: 30px;">
-                        <option value="rock">Doom metal</option>
-                        <option value="pop">Pop</option>
-                        <option value="jazz">Jazz</option>
-                        <option value="classical">Classical</option>
+                        <% genres.forEach(function(genre) { %>
+                            <option value= <%= genre.id_genre %> > <%= genre.name %> </option>
+                        <% }) %>
                     </select>
                 </div>
 
@@ -44,7 +43,7 @@
 
                 <div class="input">
                     <label class="input-optional" for="albumImgUrl">Add image url:</label>
-                    <input style="margin-bottom: 30px;" type="number" id="albumImgUrl" name="albumImgUrl">
+                    <input style="margin-bottom: 30px;" type="text" id="albumImgUrl" name="albumImgUrl">
                 </div>
 
                 <div class="input" style="margin-bottom: 40px;">
