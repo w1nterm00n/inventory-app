@@ -13,6 +13,11 @@ router.get("/addAlbum", (req, res) => {
 	controller.addAlbumGet(req, res);
 });
 
+router.post("/addAlbum", (req, res) => {
+	controller.addAlbumPost(req, res);
+	res.redirect("/");
+});
+
 router.get("/addGenre", controller.addGenreGet);
 
 router.post("/addGenre", (req, res) => {

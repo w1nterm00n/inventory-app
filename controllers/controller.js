@@ -5,6 +5,7 @@ const {
 	getGenreById,
 	addGenre,
 	getGenresList,
+	addAlbum,
 } = require("../db/queries.js");
 
 exports.homepageGet = (req, res) => {
@@ -28,6 +29,26 @@ exports.addAlbumGet = async (req, res) => {
 	//чтобы отобразить форму, надо добавить туда список с жанрами
 	const genres = await getGenresList();
 	res.render("addAlbum", { genres: genres });
+};
+
+exports.addAlbumPost = async (req, res) => {
+	//albumName, artistName, albumGenre (могуть быть беды), albumYear, albumPrice, albumImgUrl, albumDesc
+	const albumName = req.body.albumName;
+	const artistName = req.body.artistName;
+	const albumGenre = req.body.albumGenre;
+	const albumYear = req.body.albumYear;
+	const albumPrice = req.body.albumPrice;
+	const albumImgUrl = req.body.albumImgUrl;
+	const albumDesc = req.body.albumDesc;
+	await addAlbum(
+		albumName,
+		artistName,
+		albumGenre,
+		albumYear,
+		albumPrice,
+		albumImgUrl,
+		albumDesc
+	);
 };
 
 exports.addGenreGet = (req, res) => {

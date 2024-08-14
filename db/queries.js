@@ -53,6 +53,30 @@ async function getGenresList() {
 	return rows; //id_genre, name
 }
 
+async function addAlbum(
+	albumName,
+	artistName,
+	albumGenre,
+	albumYear,
+	albumPrice,
+	albumImgUrl,
+	albumDesc
+) {
+	await pool.query(
+		"INSERT INTO album (name, artist, genre_id, year, price, img_url, description)\
+         VALUES ($1, $2, $3, $4, $5, $6, $7)",
+		[
+			albumName,
+			artistName,
+			albumGenre,
+			albumYear,
+			albumPrice,
+			albumImgUrl,
+			albumDesc,
+		]
+	);
+}
+
 module.exports = {
 	getAllAlbums,
 	getAllGenres,
@@ -60,4 +84,5 @@ module.exports = {
 	getGenreById,
 	addGenre,
 	getGenresList,
+	addAlbum,
 };
