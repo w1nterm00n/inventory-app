@@ -105,6 +105,10 @@ nav > ul > li > a{
     font-size: 20px;
     color: #000000;
 }
+.delete-btn{
+    font-size: 20px;
+    margin-top: 10px;
+}
 /* album */
 
 /* genre */

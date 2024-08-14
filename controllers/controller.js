@@ -6,6 +6,7 @@ const {
 	addGenre,
 	getGenresList,
 	addAlbum,
+	deleteAlbum,
 } = require("../db/queries.js");
 
 exports.homepageGet = (req, res) => {
@@ -29,6 +30,11 @@ exports.addAlbumGet = async (req, res) => {
 	//чтобы отобразить форму, надо добавить туда список с жанрами
 	const genres = await getGenresList();
 	res.render("addAlbum", { genres: genres });
+};
+
+exports.deleteAlbumById = async (id, res) => {
+	//запустить запрос который удалит, ниче рендерить не надо
+	await deleteAlbum(id);
 };
 
 exports.addAlbumPost = async (req, res) => {

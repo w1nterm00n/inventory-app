@@ -35,4 +35,12 @@ router.get("/album/:id", (req, res) => {
 	controller.findAlbumById(id, res);
 });
 
+//!!
+router.delete("/album/:id", (req, res) => {
+	const id = parseInt(req.params.id, 10);
+	controller.deleteAlbumById(id, res);
+	res.redirect("/");
+});
+//!!
+
 module.exports = router;

@@ -25,7 +25,11 @@
                     </ul>
             
                     <button class="btn change-btn" style="margin-right: 50px;"><a href="#!">Change</a></button>
-                    <button class="btn change-btn"><a href="#!">Delete</a></button>
+                    <form action="/album/<%= album.id_album %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn delete-btn change-btn">Delete</button>
+                    </form>
+                    
+
                 </div>
                 <div class="album-cover">
                     <% if (album.img_url) { %>

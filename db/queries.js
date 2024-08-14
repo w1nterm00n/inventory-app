@@ -77,6 +77,10 @@ async function addAlbum(
 	);
 }
 
+async function deleteAlbum(id) {
+	await pool.query("DELETE FROM album WHERE id_album = ($1)", [id]);
+}
+
 module.exports = {
 	getAllAlbums,
 	getAllGenres,
@@ -85,4 +89,5 @@ module.exports = {
 	addGenre,
 	getGenresList,
 	addAlbum,
+	deleteAlbum,
 };

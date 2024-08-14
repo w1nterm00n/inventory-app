@@ -5,6 +5,8 @@ const router = require("./routes/router");
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.urlencoded({ extended: true }));
+const methodOverride = require("method-override");
+app.use(methodOverride("_method"));
 
 //задаю шаблонизатор ejs
 app.set("view engine", "ejs");
