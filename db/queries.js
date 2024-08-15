@@ -26,17 +26,7 @@ async function getAlbumById(id) {
 
 async function getGenreById(id) {
 	const { rows } = await pool.query(
-		"SELECT album.name, album.id_album, album.artist, album.year, album.price, album.img_url,\
-        genre.name AS genre_name FROM album\
-        INNER JOIN genre ON album.genre_id = genre.id_genre WHERE album.genre_id = $1;",
-		[id]
-	);
-	return rows;
-}
-
-async function getGenreById(id) {
-	const { rows } = await pool.query(
-		"SELECT album.name, album.id_album, album.artist, album.year, album.price, album.img_url,\
+		"SELECT album.name, album.id_album, album.artist, album.year, album.price, album.genre_id, album.img_url,\
         genre.name AS genre_name FROM album\
         INNER JOIN genre ON album.genre_id = genre.id_genre WHERE album.genre_id = $1;",
 		[id]
@@ -81,6 +71,23 @@ async function deleteAlbum(id) {
 	await pool.query("DELETE FROM album WHERE id_album = ($1)", [id]);
 }
 
+async function deleteGenre(id) {
+	if (id === 8) {
+		throw new Error("Cannot delete 'genre unknown'.");
+	}
+	await pool.query(
+		`UPDATE album
+         SET genre_id = 8
+         WHERE genre_id = $1;`,
+		[id]
+	);
+	await pool.query(
+		`DELETE FROM genre
+         WHERE id_genre = $1;`,
+		[id]
+	);
+}
+
 module.exports = {
 	getAllAlbums,
 	getAllGenres,
@@ -90,4 +97,5 @@ module.exports = {
 	getGenresList,
 	addAlbum,
 	deleteAlbum,
+	deleteGenre,
 };

@@ -7,6 +7,7 @@ const {
 	getGenresList,
 	addAlbum,
 	deleteAlbum,
+	deleteGenre,
 } = require("../db/queries.js");
 
 exports.homepageGet = (req, res) => {
@@ -33,8 +34,11 @@ exports.addAlbumGet = async (req, res) => {
 };
 
 exports.deleteAlbumById = async (id, res) => {
-	//запустить запрос который удалит, ниче рендерить не надо
 	await deleteAlbum(id);
+};
+
+exports.deleteGenreById = async (id, res) => {
+	await deleteGenre(id);
 };
 
 exports.addAlbumPost = async (req, res) => {
@@ -80,5 +84,6 @@ exports.findGenreById = async (id, res) => {
 	if (!albums) {
 		return res.status(404).send("Albums not found");
 	}
-	res.render("genre", { albums: albums });
+	console.log("id of this genre: ", id);
+	res.render("genre", { albums: albums, id: id });
 };

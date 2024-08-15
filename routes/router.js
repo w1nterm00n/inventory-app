@@ -35,10 +35,16 @@ router.get("/album/:id", (req, res) => {
 	controller.findAlbumById(id, res);
 });
 
-//!!
 router.delete("/album/:id", (req, res) => {
 	const id = parseInt(req.params.id, 10);
 	controller.deleteAlbumById(id, res);
+	res.redirect("/");
+});
+
+//!!
+router.delete("/genre/:id", (req, res) => {
+	const id = parseInt(req.params.id, 10);
+	controller.deleteGenreById(id, res);
 	res.redirect("/");
 });
 //!!
