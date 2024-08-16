@@ -93,7 +93,6 @@ async function getGenre(id) {
 		"SELECT * FROM genre WHERE id_genre = ($1)",
 		[id]
 	);
-	console.log(rows);
 	return rows;
 }
 
