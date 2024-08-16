@@ -8,6 +8,7 @@ const {
 	addAlbum,
 	deleteAlbum,
 	deleteGenre,
+	getGenre,
 } = require("../db/queries.js");
 
 exports.homepageGet = (req, res) => {
@@ -86,4 +87,15 @@ exports.findGenreById = async (id, res) => {
 	}
 	console.log("id of this genre: ", id);
 	res.render("genre", { albums: albums, id: id });
+};
+
+exports.updateGenreGetForm = async (id, res) => {
+	const genre = await getGenre(id);
+	res.render("changeGenre", { id: id, name: genre[0].name });
+};
+
+exports.updateAlbumGetForm = async (id, res) => {
+	const genres = await getGenresList();
+	const album = await getAlbumById(id);
+	res.render("changeAlbum", { genres: genres, album: album });
 };

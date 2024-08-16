@@ -88,6 +88,15 @@ async function deleteGenre(id) {
 	);
 }
 
+async function getGenre(id) {
+	const { rows } = await pool.query(
+		"SELECT * FROM genre WHERE id_genre = ($1)",
+		[id]
+	);
+	console.log(rows);
+	return rows;
+}
+
 module.exports = {
 	getAllAlbums,
 	getAllGenres,
@@ -98,4 +107,5 @@ module.exports = {
 	addAlbum,
 	deleteAlbum,
 	deleteGenre,
+	getGenre,
 };

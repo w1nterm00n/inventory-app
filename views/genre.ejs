@@ -36,7 +36,9 @@
             </table>
 
             <div class="buttons">
-                <button class="btn change-btn" style="margin-right: 50px;"><a href="#!">Change</a></button>
+                <form action="/genre/update/<%= id %>?_method=GET" method="POST">
+                    <button type="submit" class="btn delete-btn change-btn">Change</button>
+                </form>
 
                 <form action="/genre/<%= id %>?_method=DELETE" method="POST">
                     <button type="submit" class="btn delete-btn change-btn">Delete</button>

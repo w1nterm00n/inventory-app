@@ -7,8 +7,6 @@ router.get("/", controller.homepageGet);
 router.get("/allAlbums", controller.allAlbumsGet);
 router.get("/allGenres", controller.allGenresGet);
 
-//router.get("/addAlbum", controller.addAlbumGet);
-
 router.get("/addAlbum", (req, res) => {
 	controller.addAlbumGet(req, res);
 });
@@ -41,12 +39,22 @@ router.delete("/album/:id", (req, res) => {
 	res.redirect("/");
 });
 
-//!!
 router.delete("/genre/:id", (req, res) => {
 	const id = parseInt(req.params.id, 10);
 	controller.deleteGenreById(id, res);
 	res.redirect("/");
 });
-//!!
+
+//отображение формы для апдейта жанра
+router.get("/genre/update/:id", (req, res) => {
+	const id = parseInt(req.params.id, 10);
+	controller.updateGenreGetForm(id, res);
+});
+
+//отображение формы для апдейта альбома
+router.get("/album/update/:id", (req, res) => {
+	const id = parseInt(req.params.id, 10);
+	controller.updateAlbumGetForm(id, res);
+});
 
 module.exports = router;
