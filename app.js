@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 //
 
 //настройка порта
-const PORT = 3020;
+const PORT = 3660;
 const server = app.listen(PORT, () =>
 	console.log(`Express app listening on port ${PORT}!`)
 );

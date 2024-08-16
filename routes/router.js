@@ -46,22 +46,28 @@ router.delete("/genre/:id", (req, res) => {
 	res.redirect("/");
 });
 
+//Update genre
 router.get("/genre/update/:id", (req, res) => {
 	const id = parseInt(req.params.id, 10);
 	controller.updateGenreGetForm(id, res);
 });
-
-//
 router.post("/genre/update/:id", (req, res) => {
 	const id = parseInt(req.params.id, 10);
 	updateController.updateGenre(id, req, res);
 	res.redirect("/");
 });
-//
+//Update genre
 
+//Update album
 router.get("/album/update/:id", (req, res) => {
 	const id = parseInt(req.params.id, 10);
 	controller.updateAlbumGetForm(id, res);
 });
+router.post("/album/update/:id", (req, res) => {
+	const id = parseInt(req.params.id, 10);
+	updateController.updateAlbum(id, req, res);
+	res.redirect("/");
+});
+//Update album
 
 module.exports = router;

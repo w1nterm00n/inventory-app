@@ -111,6 +111,20 @@ async function updateGenreById(id_genre, updates) {
 	}
 }
 
+async function updateAlbumById(id_album, updates) {
+	const setClause = Object.keys(updates)
+		.map((key, index) => `${key} = $${index + 2}`)
+		.join(", ");
+	const query = `UPDATE album SET ${setClause} WHERE id_album = $1`;
+
+	try {
+		await pool.query(query, [id_album, ...Object.values(updates)]);
+	} catch (err) {
+		console.error("Error updating album:", err);
+		throw err;
+	}
+}
+
 module.exports = {
 	getAllAlbums,
 	getAllGenres,
@@ -123,4 +137,5 @@ module.exports = {
 	deleteGenre,
 	getGenre,
 	updateGenreById,
+	updateAlbumById,
 };
