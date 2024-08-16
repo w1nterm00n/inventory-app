@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const controller = require("../controllers/controller");
+const updateController = require("../controllers/updateController");
 const router = Router();
 
 router.get("/", controller.homepageGet);
@@ -45,13 +46,19 @@ router.delete("/genre/:id", (req, res) => {
 	res.redirect("/");
 });
 
-//отображение формы для апдейта жанра
 router.get("/genre/update/:id", (req, res) => {
 	const id = parseInt(req.params.id, 10);
 	controller.updateGenreGetForm(id, res);
 });
 
-//отображение формы для апдейта альбома
+//
+router.post("/genre/update/:id", (req, res) => {
+	const id = parseInt(req.params.id, 10);
+	updateController.updateGenre(id, req, res);
+	res.redirect("/");
+});
+//
+
 router.get("/album/update/:id", (req, res) => {
 	const id = parseInt(req.params.id, 10);
 	controller.updateAlbumGetForm(id, res);

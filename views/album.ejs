@@ -23,8 +23,6 @@
                         <li>year: <span> <%= album.year %> </span></li>
                         <li>description: <span> <%= album.description %> </span></li>
                     </ul>
-            
-                    <!-- <button class="btn change-btn" style="margin-right: 50px;"><a href="#!">Change</a></button> -->
 
                     <form action="/album/update/<%= album.id_album %>?_method=GET" method="POST">
                         <button type="submit" class="btn delete-btn change-btn">Change</button>
